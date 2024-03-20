@@ -39,20 +39,19 @@ class HabitsTestCase(APITestCase):
         self.assertEqual(Habit.objects.count(), 1)
         self.assertEqual(Habit.objects.get().user, self.user)
         self.assertEqual(Habit.objects.get().place, 'Дом')
-        self.assertEqual(response.json(),
-                         {
-                             'id': 1,
-                             'user': self.user.id,
-                             'place': 'Дом',
-                             'date': '2025-01-01T00:00:00+03:00',
-                             'action': 'Медитация',
-                             'is_pleasurable': False,
-                             'related_habit': None,
-                             'frequency': 'day',
-                             'reward': '',
-                             'time_required': '00:01:00',
-                             'is_public': False
-                         })
+        self.assertEqual(response.json(), {
+            'id': 1,
+            'user': self.user.id,
+            'place': 'Дом',
+            'date': '2025-01-01T00:00:00+03:00',
+            'action': 'Медитация',
+            'is_pleasurable': False,
+            'related_habit': None,
+            'frequency': 'day',
+            'reward': '',
+            'time_required': '00:01:00',
+            'is_public': False
+        })
 
     def test_habit_detail(self):
         data = {
@@ -72,20 +71,19 @@ class HabitsTestCase(APITestCase):
 
         response = self.client.get('/habits/detail/1/')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.json(),
-                         {
-                             'id': 1,
-                             'user': self.user.id,
-                             'place': 'Дом',
-                             'date': '2025-01-01T00:00:00+03:00',
-                             'action': 'Медитация',
-                             'is_pleasurable': False,
-                             'related_habit': None,
-                             'frequency': 'day',
-                             'reward': '',
-                             'time_required': '00:01:00',
-                             'is_public': False
-                         })
+        self.assertEqual(response.json(), {
+            'id': 1,
+            'user': self.user.id,
+            'place': 'Дом',
+            'date': '2025-01-01T00:00:00+03:00',
+            'action': 'Медитация',
+            'is_pleasurable': False,
+            'related_habit': None,
+            'frequency': 'day',
+            'reward': '',
+            'time_required': '00:01:00',
+            'is_public': False
+        })
 
     def test_habit_update(self):
         data = {
